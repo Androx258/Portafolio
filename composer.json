@@ -1,0 +1,8 @@
+{
+    "require-dev": {
+        "laravel/breeze": "^1.29"
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
