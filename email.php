@@ -31,7 +31,7 @@ try {
 
     // Enviar el correo
     $mail->send();
-    header("Location: ".$_SERVER['HTTP_REFERER']);
+    header("Location: https://portafoliomarlonmmg.netlify.app/");
 } catch (Exception $e) {
     echo "No se pudo enviar el correo. Mailer Error: {$mail->ErrorInfo}";
 }
