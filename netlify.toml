@@ -1,0 +1,6 @@
+# netlify.toml
+
+[build]
+  command = "tu_comando_de_compilacion"
+  publish = "tu_carpeta_de_publicacion"
+  environment = { PHP_VERSION = "8.1" }
