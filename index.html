@@ -173,7 +173,7 @@
                 <h2 class="contacto_titulo">Contáctame</h2>
                 <div class="contacto">
                     
-                    <form action="./email.php" method="post">
+                    <form id="contactForm" action="" method="post">
                         <div class="div_contacto">
                             <label for="nombre" class="label_contacto">Nombre completo</label>
                             <input type="text" name="nombre" id="nombre" class="input_contacto" required>
@@ -190,11 +190,40 @@
                             <label for="mensaje" class="label_contacto">Mensaje</label>
                             <textarea name="mensaje" id="mensaje" class="text_contacto" required></textarea>
                         </div>
-                        <input type="submit" onclick="alertMessage()" value="Enviar mensaje" id="submit" class="boton_contacto">
+                        <input type="submit" value="Enviar mensaje" id="submit" class="boton_contacto">
+                        <div id ="messageForm"></div>
                     </form>
                 </div>
             </section>  
         </div>
     </div> 
 </body>
+<script>
+    document.getElementById("contactForm").addEventListener('submit', function(event){
+        event.preventDefault()
+            let correo = document.getElementById("correo").value;
+            let nombre = document.getElementById("nombre").value;
+            let mensaje = document.getElementById("mensaje").value;
+            let asunto = document.getElementById("Asunto").value;
+            let request = new XMLHttpRequest();
+
+            request.open("POST", "email.php", true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            request.onreadystatechange = function(){
+                if(request.readyState === XMLHttpRequest.DONE){
+                    if(request.status === 200){
+                        document.getElementById("messageForm").innerHTML = `
+                            <br><span style="color: red;"><b>El correo fue enviado correctamente</b></span>
+                        `;
+                        document.getElementById("contactForm").reset();
+                    } else {
+                        alert("Error al enviar el formulario");
+                    }
+                }
+            }
+            let data = "asunto=" + encodeURIComponent(asunto) + "&correo=" + encodeURIComponent(correo) + "&nombre=" + encodeURIComponent(nombre) + "&mensaje=" + encodeURIComponent(mensaje);
+            request.send(data);
+        });
+</script>
 </html>

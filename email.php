@@ -25,7 +25,7 @@ try {
 
     // Contenido del correo
     $mail->isHTML(true);                                        // Set email format to HTML
-    $mail->Subject = $_POST['Asunto'];
+    $mail->Subject = $_POST['asunto'];
     $mail->Body    = "<h2>".$_POST['correo']."</h2><br>".$_POST['mensaje'];
     $mail->AltBody = "";
 

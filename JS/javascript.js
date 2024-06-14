@@ -45,3 +45,29 @@
           alert("El correo ha sido enviado exitosamente!!");
         }
       }
+
+      function sendEmail(){
+        alert("Entro");
+        document.getElementById("submit").addEventListener('click', function(event){
+            alert("Entr2o");
+            let correo = document.getElementById("correo").value;
+            let nombre = document.getElementById("nombre").value;
+            let mensaje = document.getElementById("mensaje").value;
+
+            let request = new XMLHttpRequest();
+
+            request.open("POST", "../email.php", true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            request.onreadystatechange = function(){
+                if(request.readyState === 4){
+                    if(request.status === 200){
+                        alert(request.responseText)
+                    } else {
+                        alert(error)
+                    }
+                }
+            }
+            request.send(null);
+        });
+      }
