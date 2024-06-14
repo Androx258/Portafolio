@@ -207,7 +207,7 @@
             let asunto = document.getElementById("Asunto").value;
             let request = new XMLHttpRequest();
 
-            request.open("POST", "email.php", true);
+            request.open("POST", "./email.php", true);
             request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
             request.onreadystatechange = function(){
